@@ -16,9 +16,11 @@ class User extends Authenticatable implements AuditableContract
 
     protected $table = 'user_tab';
     protected $primaryKey = 'user_id';
+    public $timestamps = false;
+    protected $appends = array('role');
 
     protected $fillable = [
-        'user_id', 'fio', 'email', 'role_id', 'is_blocked', 'date_last_login', 'image'
+        'user_id', 'fio', 'email', 'role_id', 'is_blocked', 'date_last_login', 'image', 'password'
     ];
 
     protected $hidden = [
@@ -33,7 +35,16 @@ class User extends Authenticatable implements AuditableContract
 
     public function isBlocked()
     {
-        return $this->is_blocked == true;
+        return $this->is_blocked == 1;
+    }
+
+    public function getRoleAttribute()
+    {
+        if ($this->role_id === 1) {
+            return 'Администратор';
+        }
+
+        return 'Пользователь';
     }
 
     public function role()

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends BaseController
 {
     public function logout()
     {
-        auth()->guard()->logout();
+        Auth::guard('web')->logout();
 
         return $this->successResponse(
             null,

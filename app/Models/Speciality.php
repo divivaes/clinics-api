@@ -20,6 +20,6 @@ class Speciality extends Model implements AuditableContract
 
     public function doctors()
     {
-        return $this->belongsToMany(Doctor::class, 'speciliaty_doctor_tab', 'doctor_speciality_id', 'doctor_id');
+        return $this->belongsToMany(Doctor::class, 'speciality_doctor_tab', 'doctor_speciality_id', 'doctor_id');
     }
 }

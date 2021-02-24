@@ -15,7 +15,7 @@ class RegisterRequest extends FormRequest
     {
         $rules = [];
 
-        $rules['email'] = 'required|string|unique:users';
+        $rules['email'] = 'required|string|unique:user_tab';
         $rules['fio'] = 'required|string|max:255';
         $rules['password'] = 'required|string|confirmed|min:4';
 

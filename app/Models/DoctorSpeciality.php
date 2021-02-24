@@ -11,7 +11,7 @@ class DoctorSpeciality extends Model implements AuditableContract
 {
     use HasFactory, Auditable;
 
-    protected $table = 'speciliaty_doctor_tab';
+    protected $table = 'speciality_doctor_tab';
     protected $primaryKey = 'speciality_doctor_id';
 
     protected $fillable = [

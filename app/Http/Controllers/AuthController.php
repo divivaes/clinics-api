@@ -22,7 +22,7 @@ class AuthController extends BaseController
             }
 
             $token = auth()->user()->createToken(config('app.name'))->accessToken;
-
+            $user = auth()->user();
         } catch (\Exception $e) {
             return $this->errorResponse(
                 401,
@@ -52,6 +52,17 @@ class AuthController extends BaseController
     public function register(RegisterRequest $request)
     {
         $request['is_blocked'] = true;
+        $request['role_id'] = 2;
+
+        if ($request['password'] !== $request['password_confirmation']) {
+            return $this->errorResponse(
+                500,
+                'Произошла ошибка при регистрации. Проверьте отправленные вами данные',
+                ''
+            );
+        }
+
+        $request['password'] = bcrypt($request['password']);
 
         try {
             $user = User::create($request->all());

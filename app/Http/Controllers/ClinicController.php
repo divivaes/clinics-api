@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clinic;
+use App\Models\Direction;
 use Illuminate\Http\Request;
 
 class ClinicController extends BaseController

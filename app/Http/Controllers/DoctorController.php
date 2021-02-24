@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Direction;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class DoctorController extends BaseController
     {
         return $this->successResponse(
             [
-                'doctor' => $doctor->lo(['specilities', 'illnesses'])
+                'doctor' => $doctor->load(['specilities', 'illnesses'])
             ],
             200,
             'Запрос успешно завершен'

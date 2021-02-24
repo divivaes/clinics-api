@@ -15,7 +15,7 @@ class LoginRequest extends FormRequest
     {
         $rules = [];
 
-        $rules['email'] = 'required|string|exists:users,email';
+        $rules['email'] = 'required|string|exists:user_tab,email';
         $rules['password'] = 'required|string';
 
         return $rules;
