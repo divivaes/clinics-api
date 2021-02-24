@@ -28,6 +28,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Passport::routes();
 
+        Passport::tokensExpireIn(now()->addDays(30));
 //        Passport::loadKeysFrom(__DIR__.'/../storage/oauth');
     }
 }
