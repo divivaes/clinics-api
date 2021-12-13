@@ -98,7 +98,7 @@ class SearchController extends BaseController
             ->where('direction_title_kz', 'like', '%' . $key . '%')
             ->orWhere('direction_title_ru', 'like', '%' . $key . '%')
             ->with(['clinics' => function ($query) {
-                $query->select('clinics_id', 'clinics_title_kz', 'clinics_title_ru', 'clinics_address_kz', 'clinics_address_ru');
+                $query->select('clinics_title_kz', 'clinics_title_ru', 'clinics_address_kz', 'clinics_address_ru');
             }])
             ->limit(5)
             ->get();
