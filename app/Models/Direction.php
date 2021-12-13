@@ -17,4 +17,9 @@ class Direction extends Model implements AuditableContract
     protected $fillable = [
         'direction_id', 'direction_title_kz', 'direction_title_ru', 'direction_title_ko', 'direction_img', 'is_popular_direction', 'direction_order_num'
     ];
+
+    public function clinics()
+    {
+        return $this->belongsToMany(Clinic::class, 'clinics_direction_tab', 'direction_id', 'clinics_id')->withTimestamps();
+    }
 }
